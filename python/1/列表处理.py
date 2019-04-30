@@ -70,6 +70,13 @@ len(列表)长度
 max(列表)取最大
 min(列表)取最小
 count()查看元素在列表中出现的次数
+reverse()倒序列表
+sort()升序
+copy()拷贝列表
+'''
+'''
+元组用小括号表示()
+元组转列表
 '''
 '''
 list = [[1,2,3], [4,5,6], [7,8,9]]
@@ -78,6 +85,7 @@ list.extend([10,11,12])
 print(list)
 list.append(13)
 print(list)
+'''
 '''
 list = [1,2,3,4,5]
 list.insert(2, 10)
@@ -91,4 +99,24 @@ print(list)
 #list.clear()
 #print(list)
 print(list.index(2))
+'''
+#元组转列表
+list = list((1,2,3,4))
+print(list)
+#输出列表里第二大值
 
+list = []
+n = 0
+while n < 5:
+    a = int(input('输入五个数'))
+    list.append(a)
+    n +=1
+print(list)
+list.sort()
+a = list.count(max(list))
+i = 0
+while i < a:
+    list.remove(max(list))
+    i += 1
+max(list)
+print(max(list))
