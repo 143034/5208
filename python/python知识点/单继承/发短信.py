@@ -30,7 +30,7 @@ def send_sms(text, mobile):
 
 if __name__ == '__main__':
 
-    mobile = "18876115108"
-    text = "您的验证码是：121254。请不要把验证码泄露给其他人。"
+    mobile = "15501912618"
+    text = "您的验证码是：541188。请不要把验证码泄露给其他人。"
 
     print(send_sms(text, mobile))
