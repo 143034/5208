@@ -2,8 +2,8 @@ import random
 from card import Card
 from user import User
 class ATM(object):
-    def __init__(self):
-        self.allUsers = {}
+    def __init__(self, allUsers):
+        self.allUsers = allUsers
     def createUser(self):
         #向用户字典中添加键值对(卡号:用户)
         name = input('请输入姓名:')
@@ -42,7 +42,27 @@ class ATM(object):
             return -1
         print('账号:%s  余额:%d' %(user.card.cardId, user.card.cardMoney))
     def getMoney(self):
-        pass
+        cardNum = input('请输入您的卡号:')
+        user = self.allUsers.get(cardNum)
+        #判断是否存在
+        if not user:
+            print('该卡号不存在,取款失败!')
+            return -1
+        #判断锁定
+        if user.card.cardLock:
+           print('该卡已经被锁定,请解锁后再进行其他操作!')
+           return -1
+        #验证密码
+        if not self.checkPasswd(user.card.cardPasswd):
+            print('密码输入错误,查询失败，该卡已经被锁定,请解锁后再进行其他操作!')
+            user.card.cardLock = True
+            return -1
+        money = int(input('请输入取款金额:'))
+        if money > user.card.cardMoney:
+            print('余额不足!失败')
+            return -1
+        user.card.cardMoney -= money
+        print('取款成功!余额:%d' %(user.card.cardMoney))
     def saveMoney(self):
         pass
     def transferMoney(money):
